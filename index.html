@@ -4,13 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Color Gradient Generator by Enyichi A. Agu</title>
+    <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
-    <h1>Color Gradient Gnerator</h1>
-    <div class="gradient">
-        <div class="container">
-            <div class="code"></div>
+   <div class="content">
+        <header>
+            <h1>Color Gradient Generator !</h1>
+            <p class="sub">Generate css gradients</p>
+        </header>
+
+        <div class="gradient">
+            <div class="container"></div>
         </div>
-    </div>
+
+
+        <section class="settings">
+
+            <div class="colors">
+                <input type="color" name="color" id="color">
+                <input type="color" name="color" id="color">
+            </div>
+
+            <div class="next">
+                <div class="plus">+</div>
+            </div>
+        </section>
+   </div>
+
+   <section class="pattern">
+       <div class="direction pad">Left to Right</div>
+       <div class="random pad">RANDOM</div>
+   </section>
+
+
+    <footer>
+        <strong>By Enyichi A. Agu</strong>
+    </footer>
+
+
+    <script src="./script.js"></script>
 </body>
 </html>
