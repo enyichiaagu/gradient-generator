@@ -1,6 +1,7 @@
 //Variables
 $plus-font: 50px;
 $head-font: 18px;
+$screen: 550px;
 
 
 //Mixins
@@ -9,13 +10,18 @@ $head-font: 18px;
     height: $size;
 }
 
+@mixin circle ($size) {
+    @include square ($size);
+    border-radius: 50%;
+}
+
 
 //Main Styles
 * {
     padding: 0;
     margin: 0;
     outline: none;
-    border: 1px solid blue;
+    // border: 1px solid blue;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
 }
@@ -24,7 +30,11 @@ header {
     letter-spacing: 5px;
     font-size: $head-font;
     margin-bottom: 60px;
-    margin-top: 10px;
+    padding-top: 10px;
+
+    @media screen and (max-width: $screen) {
+        font-size: $head-font * 0.5;
+    }
 
     text: {
         align: center;
@@ -37,6 +47,10 @@ header {
         letter-spacing: 3px;
         font-weight: bold;
         font-size: $head-font + 3px;
+
+        @media screen and (max-width: $screen) {
+            font-size: 15px;
+        }
     }
 }
 
@@ -49,7 +63,9 @@ header {
     margin-right: auto;
     margin-left: auto;
 
-
+    @media screen and (max-width: $screen) {
+        height: 30vh;
+    }
 }
 
 section.settings {
@@ -57,6 +73,7 @@ section.settings {
     justify-content: center;
 
     input {
+        margin: 0 5px;
         @include square(40px)
     }
 
@@ -70,6 +87,7 @@ section.settings {
         .plus {
             font-weight: bold;
             font-size: $plus-font;
+            cursor: pointer;
         }
     }
 }
@@ -85,7 +103,8 @@ section.pattern {
         margin: 20px;
         background-color: black;
         color: white;
-        border-radius: 5px;   
+        border-radius: 5px;
+        cursor: pointer;   
     }
 
     .direction::after {
@@ -97,7 +116,8 @@ section.pattern {
         padding: 10px;
         margin: 20px;
         border-radius: 5px;
-        border: 2px solid black; 
+        border: 2px solid black;
+        cursor: pointer; 
     }
 }
 
@@ -113,4 +133,73 @@ footer {
         text-transform: uppercase;
         letter-spacing: 3px;
     }
+}
+
+//Overlays
+
+.overlay {
+    background-color: rgba(84, 84, 84, 0.3);
+    height: 110vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 200;
+
+    .prompt {
+        height: 30vh;
+        max-width: 500px;
+        box-shadow: 5px 2px 12px #00000050;
+        background-color: white;
+        margin: 2% auto 0 auto;
+    }
+
+    
+    
+    .message {
+        height: 70%;
+    }
+
+    .code-message {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    ul {
+        li {
+            list-style: none;
+            font-size: 18px;
+            font-weight: 200;
+            padding: 3px;
+            text-align: center;
+            cursor: pointer;
+            border-bottom: 1px solid #dadada;
+        }
+
+        li:hover {
+            background-color: #dadada;
+        }
+
+    }
+
+    .btns {
+        height: 30%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .close {
+        @include circle(40px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        border: 2px solid red;
+        color: red;
+        cursor: pointer;
+    }
+}
+
+.overlay1, .overlay2, .overlay3 {
+    display: none;
 }
