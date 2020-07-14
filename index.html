@@ -7,6 +7,50 @@
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
+    
+    <!-- OVERLAYS -->
+    <div class="overlay overlay1">
+        <div class="prompt code-prompt">
+            <div class="message code-message"><div>Click on the gradient to vew code</div></div>
+            <div class="btns">
+                <div class="close">
+                    <div>X</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay overlay2">
+        <div class="prompt source-code">
+            <div class="message"></div>
+            <div class="btns">
+                <div class="close">
+                    <div>X</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay overlay3">
+        <div class="prompt menu">
+            <div class="message">
+                <ul>
+                    <li>Left to Right</li>
+                    <li>Top to bottom</li>
+                    <li>Conical</li>
+                    <li>Diagonal</li>
+                </ul>
+            </div>
+            <div class="btns">
+                <div class="close close-pattern">
+                    <div>X</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- END OF OVERLAYS -->
+
    <div class="content">
         <header>
             <h1>Color Gradient Generator !</h1>
@@ -21,8 +65,8 @@
         <section class="settings">
 
             <div class="colors">
-                <input type="color" name="color" id="color">
-                <input type="color" name="color" id="color">
+                <input  class="color1" type="color" name="color" id="color">
+                <input class="color2" type="color" name="color" id="color">
             </div>
 
             <div class="next">
