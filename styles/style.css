@@ -90,9 +90,6 @@ footer {
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
 }
 footer strong {
   display: block;
