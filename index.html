@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Color Gradient Generator by Enyichi A. Agu</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
@@ -13,7 +14,7 @@
         <div class="prompt code-prompt">
             <div class="message code-message"><div>Click on the gradient to vew code</div></div>
             <div class="btns">
-                <div class="close">
+                <div class="close close2">
                     <div>X</div>
                 </div>
             </div>
@@ -22,9 +23,11 @@
 
     <div class="overlay overlay2">
         <div class="prompt source-code">
-            <div class="message"></div>
+            <div class="message">
+                <div class="source"></div>
+            </div>
             <div class="btns">
-                <div class="close">
+                <div class="close close3">
                     <div>X</div>
                 </div>
             </div>
@@ -35,7 +38,7 @@
         <div class="prompt menu">
             <div class="message">
                 <ul>
-                    <li>Left to Right</li>
+                    <li class="active">Left to Right</li>
                     <li>Top to bottom</li>
                     <li>Conical</li>
                     <li>Diagonal</li>
@@ -54,7 +57,7 @@
    <div class="content">
         <header>
             <h1>Color Gradient Generator !</h1>
-            <p class="sub">Generate css gradients</p>
+            <p class="sub">Generate simple css gradients</p>
         </header>
 
         <div class="gradient">
@@ -65,12 +68,8 @@
         <section class="settings">
 
             <div class="colors">
-                <input  class="color1" type="color" name="color" id="color">
+                <input class="color1" type="color" name="color" id="color">
                 <input class="color2" type="color" name="color" id="color">
-            </div>
-
-            <div class="next">
-                <div class="plus">+</div>
             </div>
         </section>
    </div>

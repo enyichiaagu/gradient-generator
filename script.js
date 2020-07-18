@@ -1,17 +1,35 @@
 const 
     color1 = document.querySelector('.color1'),
     color2 = document.querySelector('.color2'),
+
+
     preview = document.querySelector('.container'),
     random = document.querySelector('.random'),
+    textarea = document.querySelector('.source')
     direction = document.querySelector('.direction'),
+
+
+    overlay1 = document.querySelector('.overlay1'),
+    overlay2 = document.querySelector('.overlay2'),
     overlay3 = document.querySelector('.overlay3'),
-    closePattern = document.querySelector('.close-pattern'),
+
+
+    close1 = document.querySelector('.close-pattern'),
+    close2 = document.querySelector('.close2'),
+    close3 = document.querySelector('.close3'),
+
+
     list = document.getElementsByTagName('li'),
-    plus = document.querySelector('.plus'),
-    colorGroup = document.querySelector('.colors')
+    colorGroup = document.querySelector('.colors'),
+    inputGroup = document.getElementsByTagName('input')
 
 
-let flow = 'to right,'
+let 
+    flow = 'to right,',
+    others = '',
+    minus,
+    array,
+    code
 
 
 const randomColors = () => [
@@ -22,7 +40,7 @@ const randomColors = () => [
 
 const padHex = (arr) => arr.map(
     value => {
-       if (value.length == 1) {
+       if (value.length < 2) {
            return '0'+ value
        } else {
            return value
@@ -47,14 +65,12 @@ function gradientType () {
         return 'radial-gradient'
     } else if (direction.textContent == list[3].textContent) {
         flow = 'to right bottom,'
-        return 'linear-gradient'
     } else if (direction.textContent == list[0].textContent) {
         flow = 'to right,'
-        return `linear-gradient`
     } else {
         flow = 'to bottom,'
-        return `linear-gradient`
     }
+    return `linear-gradient`
 }
 
 
@@ -62,6 +78,8 @@ function print() {
     preview.style.background = `${gradientType()}(${flow} 
         ${color1.value},
         ${color2.value})`
+    code = preview.style.background
+    textarea.innerHTML = `.gradient { ${code} }`
 }
 
 
@@ -79,30 +97,28 @@ function changeDirection(element){
     print()
 }
 
-generate();
 
-//ADDING COLOR FIELD
-
-function add() {
-    let newColor = document.createElement('input');
-    newColor.type = 'color'
-    newColor.value = hex(...padHex(randomColors()))
-    colorGroup.appendChild(newColor)
-}
-
-
+//ON PAGE LOAD
+show(overlay1)
+generate()
 
 //EVENT LISTENERS
 random.addEventListener("click", generate);
-direction.addEventListener('click', ()=> show(overlay3));
-closePattern.addEventListener('click', () => close(overlay3))
+direction.addEventListener('click', ()=> show(overlay3))
 color1.addEventListener('input', print)
 color2.addEventListener('input', print)
-plus.addEventListener('click', add)
+preview.addEventListener('click', () => show(overlay2))
+
+close1.addEventListener('click', () => close(overlay3))
+
+close2.addEventListener('click', () => close(overlay1))
+close3.addEventListener('click', () => {
+    close(overlay2)
+    textarea.innerText = preview.style.background
+})
 
 
 
 for (let i = 0; i < list.length; i++) {
     list[i].addEventListener('click', ()=> changeDirection(list[i]));
 }
-
