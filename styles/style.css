@@ -57,6 +57,22 @@ section.settings input {
   width: 40px;
   height: 40px;
 }
+section.settings .more {
+  display: flex;
+  font-size: 45px;
+}
+section.settings .more .remove {
+  display: none;
+}
+section.settings .more div {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 0 5px;
+}
 
 section.pattern {
   display: flex;

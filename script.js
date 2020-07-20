@@ -1,35 +1,23 @@
 const 
-    color1 = document.querySelector('.color1'),
-    color2 = document.querySelector('.color2'),
-
-
-    preview = document.querySelector('.container'),
-    random = document.querySelector('.random'),
-    textarea = document.querySelector('.source')
-    direction = document.querySelector('.direction'),
-
-
-    overlay1 = document.querySelector('.overlay1'),
-    overlay2 = document.querySelector('.overlay2'),
-    overlay3 = document.querySelector('.overlay3'),
-
-
-    close1 = document.querySelector('.close-pattern'),
-    close2 = document.querySelector('.close2'),
-    close3 = document.querySelector('.close3'),
-
-
-    list = document.getElementsByTagName('li'),
-    colorGroup = document.querySelector('.colors'),
     inputGroup = document.getElementsByTagName('input')
+    add = document.querySelector('.add')
+    minus = document.querySelector('.remove')
+    inputBody = document.querySelector('.colors')
+    preview = document.querySelector('.container')
+    random = document.querySelector('.random')
+    direction = document.querySelector('.direction')
+    list = document.getElementsByTagName('li')
+    textarea = document.querySelector('.source')
 
+    overlay1 = document.querySelector('.overlay1')
+    overlay2 = document.querySelector('.overlay2')
+    overlay3 = document.querySelector('.overlay3')
 
-let 
-    flow = 'to right,',
-    others = '',
-    minus,
-    array,
-    code
+    close1 = document.querySelector('.close1')
+    close2 = document.querySelector('.close2')
+    close3 = document.querySelector('.close3')
+
+let code;
 
 
 const randomColors = () => [
@@ -58,6 +46,48 @@ function close(element) {
     element.style.display = 'none';
 }
 
+show(overlay1)
+
+
+function loopStart() {
+    for (val of inputGroup) {
+        val.value = hex(...padHex(randomColors()))
+    }
+    bgColor()
+}
+loopStart()
+
+function bgColor() {
+    code = ''
+    for (val of inputGroup) {
+        if (val == inputGroup[inputGroup.length - 1] ) {
+            code += val.value
+        } else {code += val.value + ', '}
+        
+    }
+    preview.style.background = `${gradientType()}(${flow} ${code})`
+    textarea.textContent = preview.style.background
+
+}
+bgColor()
+
+function changeDirection(element){
+    close(overlay3);
+    direction.textContent = element.textContent;
+    gradientType();
+    bgColor()
+}
+
+function reverse () {
+    for (let i = 0; i < Math.floor(inputGroup.length/2); i++) {
+        let hold = inputGroup[i]
+        console.log(hold)
+        inputGroup[i] = inputGroup[inputGroup.length - 1 - i]
+        console.log(inputGroup[inputGroup.length - 1 - i])
+        inputGroup[inputGroup.length - 1 - i] = hold
+    }
+    bgColor()
+}
 
 function gradientType () {
     if (direction.textContent == list[2].textContent) {
@@ -74,51 +104,41 @@ function gradientType () {
 }
 
 
-function print() {
-    preview.style.background = `${gradientType()}(${flow} 
-        ${color1.value},
-        ${color2.value})`
-    code = preview.style.background
-    textarea.innerHTML = `.gradient { ${code} }`
+function addElement() {
+    let elem = document.createElement('input')
+    elem.className = `color${inputGroup.length + 1}`
+    elem.type = 'color'
+    elem.value = hex(...padHex(randomColors()))
+    elem.addEventListener('input', bgColor)
+    inputBody.appendChild(elem)
+    bgColor()
+
+    if (inputGroup.length > 2) show(minus)
+    if (inputGroup.length == 5) close(add)
 }
 
+function removeElement() {
+    inputGroup[inputGroup.length - 1].remove()
+    show(add)
+    bgColor()
 
-
-function generate() {
-    color1.value = hex(...padHex(randomColors()))
-    color2.value = hex(...padHex(randomColors()))
-    print();
+    if (inputGroup.length < 3) close(minus)
 }
 
-function changeDirection(element){
-    close(overlay3);
-    direction.textContent = element.textContent;
-    gradientType();
-    print()
-}
-
-
-//ON PAGE LOAD
-show(overlay1)
-generate()
-
-//EVENT LISTENERS
-random.addEventListener("click", generate);
+add.addEventListener('click', addElement)
+minus.addEventListener('click', removeElement)
+random.addEventListener('click', loopStart)
 direction.addEventListener('click', ()=> show(overlay3))
-color1.addEventListener('input', print)
-color2.addEventListener('input', print)
-preview.addEventListener('click', () => show(overlay2))
+preview.addEventListener('click', ()=> show(overlay2))
 
-close1.addEventListener('click', () => close(overlay3))
-
-close2.addEventListener('click', () => close(overlay1))
-close3.addEventListener('click', () => {
-    close(overlay2)
-    textarea.innerText = preview.style.background
-})
+close1.addEventListener('click', ()=> close(overlay1))
+close2.addEventListener('click', ()=> close(overlay2))
+close3.addEventListener('click', ()=> close(overlay3))
 
 
-
+for (let i = 0; i < 2; i++) {
+    inputGroup[i].addEventListener('input', bgColor)
+}
 for (let i = 0; i < list.length; i++) {
     list[i].addEventListener('click', ()=> changeDirection(list[i]));
 }
