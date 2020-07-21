@@ -157,8 +157,6 @@ footer {
         background-color: white;
         margin: 2% auto 0 auto;
     }
-
-    
     
     .message {
         height: 70%;
@@ -170,19 +168,28 @@ footer {
         justify-content: center;
     }
 
+    .code-prompt, .menu {
+        height: 180px;
+    }
+
     .source-code {
         padding: 20px;
     }
 
     .source {
         border: 1px solid silver;
-        overflow: auto;
+        overflow-y: auto;
         width: 100%;
         height: 80%;
         font-size: 18px;
         font-weight: 100;
         font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
         "Droid Sans Mono", monospace;
+    }
+
+    pre {
+        height: 100%;
+        overflow-y: auto;
     }
 
     ul {
@@ -194,6 +201,7 @@ footer {
             text-align: center;
             cursor: pointer;
             color: grey;
+            font-weight: bold;
         }
 
         li:hover {

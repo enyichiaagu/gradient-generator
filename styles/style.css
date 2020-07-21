@@ -135,17 +135,24 @@ footer strong {
   align-items: center;
   justify-content: center;
 }
+.overlay .code-prompt, .overlay .menu {
+  height: 180px;
+}
 .overlay .source-code {
   padding: 20px;
 }
 .overlay .source {
   border: 1px solid silver;
-  overflow: auto;
+  overflow-y: auto;
   width: 100%;
   height: 80%;
   font-size: 18px;
   font-weight: 100;
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono", "Droid Sans Mono", monospace;
+}
+.overlay pre {
+  height: 100%;
+  overflow-y: auto;
 }
 .overlay ul li {
   list-style: none;
@@ -155,6 +162,7 @@ footer strong {
   text-align: center;
   cursor: pointer;
   color: grey;
+  font-weight: bold;
 }
 .overlay ul li:hover {
   background-color: #dadada;
