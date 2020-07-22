@@ -1,0 +1,20 @@
+{
+  "name": "gradient-generator",
+  "version": "1.0.0",
+  "description": "This is a basic app for generating css color gradients for websites and web apps.",
+  "main": "script.js",
+  "scripts": {
+    "sass-watch": "cd styles && sass --no-source-map --watch style.scss style.css",
+    "sass-compile": "cd styles && sass --no-source-map style.scss style.css && echo \"Compiled Successfully\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enyichiaagu/gradient-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/enyichiaagu/gradient-generator/issues"
+  },
+  "homepage": "https://github.com/enyichiaagu/gradient-generator#readme"
+}
