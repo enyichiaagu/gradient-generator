@@ -124,6 +124,7 @@ footer strong {
   height: 30vh;
   max-width: 500px;
   box-shadow: 5px 2px 12px #00000050;
+  border-radius: 10px;
   background-color: white;
   margin: 2% auto 0 auto;
 }

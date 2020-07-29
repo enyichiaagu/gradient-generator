@@ -67,7 +67,6 @@ function bgColor() {
     }
     preview.style.background = `${gradientType()}(${flow} ${code})`
     textarea.textContent = `.gradient { ${preview.style.background} }`
-
 }
 bgColor()
 
