@@ -11,4 +11,4 @@ Color Gradient Generator was built with:
 - [x] JAVASCRIPT
 
 ## Preview
-A demo can be found on [Netlify.](http://color-gradient-generator.netlify.app)
+A demo can be found on [Netlify](http://color-gradient-generator.netlify.app).
